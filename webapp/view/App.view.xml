@@ -1,0 +1,15 @@
+<mvc:View
+    controllerName="sap.training.exc.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <mvc:XMLView viewName="sap.training.exc.view.Overview"/>
+            </pages>
+        </App>
+    </Shell>
+
+</mvc:View>
