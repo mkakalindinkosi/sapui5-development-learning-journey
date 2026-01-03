@@ -1,7 +1,39 @@
-<mvc:View controllerName="sap.training.exc.controller.Detail"
-          xmlns:mvc="sap.ui.core.mvc" 
-          xmlns="sap.m">
+<mvc:View
+    controllerName="sap.training.exc.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
 
-   
-	
+    <Page title="{i18n>detailPageTitle}"
+          showNavButton="true"
+          navButtonPress=".onNavBack">
+
+        <content>
+            <ObjectHeader
+    responsive="true"
+    fullScreenOptimized="true"
+    title="{Form} {CustomerName}">
+    <attributes>
+     
+        <ObjectAttribute title="Customer GUID"  text="{CustomerGuid}"/>
+      
+        <ObjectAttribute title="Customer Number" text="{CustomerNumber}"/>
+        <ObjectAttribute title="Street" text="{Street}"/>
+        <ObjectAttribute title="Postcode" text="{PostCode}"/>
+        <ObjectAttribute title="City" text="{City}"/>
+        <ObjectAttribute title="Country" text="{Country}"/>
+        <ObjectAttribute title="Email" text="{Email}"/>
+        <ObjectAttribute title="Telephone" text="{Telephone}"/>
+        <ObjectAttribute title="Discount"
+                         text="{
+                             path: 'Discount',
+                             type: 'sap.ui.model.type.Float',
+                             formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                         }"/>
+    </attributes>
+</ObjectHeader>
+
+        </content>
+
+    </Page>
+
 </mvc:View>

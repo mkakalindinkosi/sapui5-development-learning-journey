@@ -71,7 +71,7 @@
                     "fallbackLocale": ""
                 }
             },
-            "ODataModel": {
+            "": {
                "type": "sap.ui.model.odata.v4.ODataModel",
                 "dataSource": "mainService",
                 "settings": {
@@ -80,11 +80,8 @@
                     "autoExpandSelect": true,
                     "earlyRequests": true
                 }
-            },
-        "": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "model/data.json"
-        }
+            }
+       
         },
         "handleValidation": true,
         "resources": {
@@ -101,10 +98,46 @@
                 "async": true,
                 "viewPath": "sap.training.exc.view",
                 "controlAggregation": "pages",
-                "controlId": "app"
+                "controlId": "app",
+                "bypassed": {
+                "target": [
+                    "notFound"
+                ]
+            }
             },
-            "routes": [],
-            "targets": {}
+            "routes": [
+                    {
+                "name": "overview",
+                "pattern": "",
+                "target": [
+                    "overview"
+                ]
+            },
+            {
+                "name": "detail",
+                "pattern": "detail/{customerGuid}",
+                "target": [
+                    "detail"
+                ]
+                }
+            ],
+            "targets": {
+                "overview": {
+                    "viewId": "overview",
+                    "viewName": "Overview",
+                    "viewLevel": 1
+                    },
+            "detail": {
+                    "viewId": "detail",
+                    "viewName": "Detail",
+                    "viewLevel": 2
+                    },
+            "notFound": {
+                    "viewId": "notFound",
+                    "viewName": "NotFound",
+                    "transition": "show"
+                    }
+            }
         },
         "rootView": {
             "viewName": "sap.training.exc.view.App",

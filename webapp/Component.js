@@ -14,11 +14,16 @@ function (UIComponent,Device,JSONModel) {
     init: function () {
     // call the base component's init function
     UIComponent.prototype.init.apply(this, arguments);
+
      // set device model
         var oDeviceModel = new JSONModel(Device);
         oDeviceModel.setDefaultBindingMode("OneWay");
         this.setModel(oDeviceModel, "device");
+
+    // enable routing
+        this.getRouter().initialize();
         },
+
     getContentDensityClass: function () {
     if (!this._sContentDensityClass) {
         if (Device.support.touch) {

@@ -67,7 +67,7 @@
             <!-- ================= CUSTOMER TABLE ================= -->
             <Table
                 id="customerTable"
-                items="{/Customers}"
+                items="{ path: '/UX_Customer', templateShareable: false }"
                 mode="SingleSelectLeft"
                 selectionChange=".onCustomerChange"
                 growing="true"
@@ -88,7 +88,8 @@
                 </columns>
 
                 <items>
-                    <ColumnListItem>
+                    <!-- Context is inherited automatically; do NOT set bindingContext -->
+                    <ColumnListItem type="Navigation" press=".onNavToDetails">
                         <cells>
                             <ObjectIdentifier title="{CustomerName}"/>
                             <Text text="{City}"/>
@@ -120,13 +121,8 @@
                         <cells>
                             <Text text="{AirlineID}"/>
                             <Text text="{ConnectionNumber}"/>
-
-                            <Text
-                                text="{ path: 'FlightDate', formatter: 'formatter.formatFlightDate' }"/>
-
-                            <Text
-                                text="{ path: 'Class', formatter: 'formatter.classText' }"/>
-
+                            <Text text="{ path: 'FlightDate', formatter: 'formatter.formatFlightDate' }"/>
+                            <Text text="{ path: 'Class', formatter: 'formatter.classText' }"/>
                             <ObjectNumber
                                 number="{
                                     parts: [
@@ -137,7 +133,6 @@
                                     formatOptions: { showMeasure: false }
                                 }"
                                 unit="{ForeignCurrency}"/>
-
                             <core:Icon
                                 src="{= ${IsCancelled} === 'X'
                                     ? 'sap-icon://cancel'
